@@ -4,7 +4,6 @@ import java.util.Scanner;
 public class MovieManager {
     ArrayList<Movie> movies = new ArrayList<>();
     Scanner scanner = new Scanner(System.in);
-
     public void addMovie() {
         System.out.println("Enter movie name:");
         String title = scanner.nextLine();
@@ -43,8 +42,6 @@ public class MovieManager {
 
     }
 
-
-
     public void displayMovieRating(String title) {
         System.out.println("Enter movie name:");
         String movie_title = scanner.nextLine();
@@ -60,11 +57,14 @@ public class MovieManager {
 
 
     public void findBestDirector() {
-        if(Movie.isEmpty()){
+        if(movies.isEmpty()){
             System.out.println("No movies are available.");
         } else {
-            System.out.println("Best director: <director> with an average" +
-                    " rating of <averagr>");
+            ArrayList<String> directors = new ArrayList<>();
+            for (Movie movie : movies) {
+                    directors.add(movie.director);
+            }
+            System.out.println("Best director: <director> with an average rating of <averagr>");
         }
 
     }
