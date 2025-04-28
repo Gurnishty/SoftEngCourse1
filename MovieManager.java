@@ -59,12 +59,53 @@ public class MovieManager {
     public void findBestDirector() {
         if(movies.isEmpty()){
             System.out.println("No movies are available.");
-        } else {
-            ArrayList<String> directors = new ArrayList<>();
-            for (Movie movie : movies) {
-                    directors.add(movie.director);
+        } else {String[] directors_unique = new String[movies.size()];
+            int[] count_each_director = new int[movies.size()];
+            int size = 0;
+
+
+            String director = "some director name";
+
+            boolean found = false;
+            for (int i = 0; i < size; i++) {
+                if (directors_unique[i].equals(director)) {
+                    count_each_director[i]++;
+                    found = true;
+                    break;
+                }
             }
-            System.out.println("Best director: <director> with an average rating of <averagr>");
+
+
+            if (!found) {
+                directors_unique[size] = director;
+                count_each_director[size] = 1;
+                size++;
+            }
+
+
+            String bestDirector = "";
+            int maxCount = 0;
+
+            for (int i = 0; i < size; i++) {
+                if (count_each_director[i] > maxCount) {
+                    maxCount = count_each_director[i];
+                    bestDirector = directors_unique[i];
+                }
+            }
+            int best_movie_sum = 0;
+            int best_movie_num = 0;
+            for(Movie movie : movies) {
+
+                if (movie.director == bestDirector) {
+                    best_movie_num++;
+                    best_movie_sum += movie.rating;
+                }
+            }
+            int best_avg = best_movie_sum / best_movie_num;
+            System.out.println("Best director: " + bestDirector + "with an average rating of" + best_avg);
+            }
+
+
         }
 
     }
