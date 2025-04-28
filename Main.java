@@ -1,55 +1,53 @@
 import java.io.File;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 
 public class Main {
-    public void f1(){}
-    public void f2(){}
-    public void f3(){}
-    public void f4(){
-        if(Movie.isEmpty()){
-            System.out.println("No movies are available.");
-        } else {
-            System.out.println("Best director: <director> with an average" +
-                    " rating of <averagr>");
-        }
-    }
-    public void startup() {
+    public static void manageMovies() {
+        MovieManager manager = new MovieManager();
         System.out.println("Welcome to the Movies Management System!");
-        System.out.println("1. Add a new movie");
-        System.out.println("2. Display all movies");
-        System.out.println("3. Display movie rating");
-        System.out.println("4. Find the best director");
-        System.out.println("5. Exit");
-        System.out.println("Please enter your choice");
-        int choice = scanner.nextInt();
+        int choice = 0;
+        while(choice < 1 || choice > 5) {
+            System.out.println("1. Add a new movie");
+            System.out.println("2. Display all movies");
+            System.out.println("3. Display movie rating");
+            System.out.println("4. Find the best director");
+            System.out.println("5. Exit");
+            System.out.println("Please enter your choice");
+            choice = scanner.nextInt();
+            if (choice < 1 || choice > 5) {
+                System.out.println("Invalid choice. Please try again.");
+            }
+        }
         switch (choice) {
             case 1:
-                f1();
+                manager.addMovie();
                 break;
             case 2:
-                f2();
+                manager.displayAllMovies();
                 break;
             case 3:
-                f3();
+                String movie_name = scanner.nextLine();
+                manager.displayMovieRating(movie_name);
                 break;
             case 4:
-                f4();
+                manager.findBestDirector();
                 break;
             case 5:
-                System.out.println("Exiting the program, Goodbye!");
+                System.out.println("Exiting the program. Goodbye!");
                 return;
             default:
                 // Code to execute if all the cases don't match
-                startup();
+                manageMovies();
                 return;
         }
+        manageMovies();
         return;
     }
     public static Scanner scanner; // Note: Do not change this line.
 
-    public static void manageMovies() {}
 
     public static void main(String[] args) throws IOException {
         String path = args[0];
