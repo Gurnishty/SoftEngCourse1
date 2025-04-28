@@ -60,7 +60,12 @@ public class MovieManager {
 
 
     public void findBestDirector() {
-
+        if(Movie.isEmpty()){
+            System.out.println("No movies are available.");
+        } else {
+            System.out.println("Best director: <director> with an average" +
+                    " rating of <averagr>");
+        }
 
     }
 }
