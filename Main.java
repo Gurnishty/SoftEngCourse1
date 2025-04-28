@@ -3,13 +3,18 @@ import java.io.IOException;
 import java.util.Scanner;
 
 
-
 public class Main {
     public void f1(){}
     public void f2(){}
     public void f3(){}
-    public void f4(){}
-    public void f5(){}
+    public void f4(){
+        if(Movie.isEmpty()){
+            System.out.println("No movies are available.");
+        } else {
+            System.out.println("Best director: <director> with an average" +
+                    " rating of <averagr>");
+        }
+    }
     public void startup() {
         System.out.println("Welcome to the Movies Management System!");
         System.out.println("1. Add a new movie");
@@ -33,8 +38,8 @@ public class Main {
                 f4();
                 break;
             case 5:
-                f5();
-                break;
+                System.out.println("Exiting the program, Goodbye!");
+                return;
             default:
                 // Code to execute if all the cases don't match
                 startup();
