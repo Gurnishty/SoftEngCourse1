@@ -3,10 +3,10 @@ import java.util.Scanner;
 
 public class MovieManager {
     ArrayList<Movie> movies = new ArrayList<>();
-    Scanner scanner; // Use the shared scanner
+    Scanner scanner;
 
     public MovieManager(Scanner scanner) {
-        this.scanner = scanner; // Initialize with the scanner from Main
+        this.scanner = scanner;
     }
 
     public void addMovie() {
@@ -20,15 +20,17 @@ public class MovieManager {
 
         System.out.println("Enter rating:");
         double rating;
+/////////////////////////////////////////////////////
         try {
-            rating = Double.parseDouble(scanner.nextLine());
+            rating = scanner.nextDouble();
+            scanner.nextLine();
         } catch (NumberFormatException e) {
             System.out.println("Invalid rating format. Please enter a number.");
             return;
         }
-
+/////////////////////////////////////////////////////
         if (rating < 0 || rating > 10) {
-            System.out.println("Invalid rating.");
+            System.out.println("Invalid rating");
             return;
         }
 
@@ -38,7 +40,7 @@ public class MovieManager {
         Movie movie = new Movie(title, director, rating);
         movies.add(movie);
 
-        System.out.println("Movie added successfully!");
+        System.out.println("Movie " + title + " added successfully!");
     }
 
     public void displayAllMovies() {
@@ -47,22 +49,23 @@ public class MovieManager {
             return;
         } else {
             for (Movie movie : movies) {
-                System.out.println("Name: " + movie.title + ", rating: " + movie.rating + ", director: " + movie.director);
+                System.out.println("Name: " + movie.title + " rating: " +
+                        movie.rating + " director: " + movie.director);
             }
         }
     }
 
     public void displayMovieRating() {
         System.out.println("Enter movie name:");
-        String movie_title = scanner.nextLine(); // Removed the extra scanner.nextLine()
+        String movie_title = scanner.nextLine();
 
         for (Movie movie : movies) {
             if (movie.title.equalsIgnoreCase(movie_title)) {
-                System.out.println("Rating for " + movie.title + " : " + movie.rating);
+                System.out.println("Rating for " + movie.title + ": " + movie.rating);
                 return;
             }
         }
-        System.out.println("Movie not found with name " + movie_title);
+        System.out.println("No movie found with name " + movie_title);
     }
 
     public void findBestDirector() {
@@ -106,7 +109,8 @@ public class MovieManager {
                 }
             }
 
-            System.out.println("Best director: " + bestDirector + " with an average rating of " + highestAverage);
+            System.out.printf("Best director: " + bestDirector +
+                    " with an average rating of: %.2f%n", highestAverage);
         }
     }
 }
