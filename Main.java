@@ -1,14 +1,23 @@
-import java.io.File;
-import java.io.IOException;
-import java.util.Scanner;
-
-
+/**
+ * Main class for the Movies Management System.
+ * Handles reading input from a file and managing test runs.
+ */
 public class Main {
+
+    /**
+     * Starts the movie management interface for one test case.
+     */
     public static void manageMovies(){
         System.out.println("Welcome to the Movies Management System!.");
         MovieManager manager = new MovieManager(scanner);
         manage(manager);
     }
+
+    /**
+     * Handles user interaction for managing movies.
+     *
+     * @param manager The MovieManager used to manage the movie collection.
+     */
     public static void manage(MovieManager manager) {
         String choice;
         while(true) {
@@ -18,7 +27,7 @@ public class Main {
             System.out.println("4. Find the best director");
             System.out.println("5. Exit");
             System.out.println("Please enter your choice:");
-            //////////
+
             choice = scanner.nextLine();
 
             switch (choice) {
@@ -38,22 +47,27 @@ public class Main {
                     System.out.println("Exiting the program. Goodbye!");
                     return;
                 default:
-                    // Code to execute if all the cases don't match
                     System.out.println("Invalid choice. Please try again.");
-//                manage(manager);
-//                    return;
             }
         }
-//        manage(manager);
-//        return;
     }
+
+    /**
+     * Shared Scanner instance used for reading input.
+     */
     public static Scanner scanner; // Note: Do not change this line.
 
-
+    /**
+     * Entry point for the program. Reads the input file path, number of tests,
+     * and runs the movie management system for each test.
+     *
+     * @param args Command-line arguments. args[0] should be the file path.
+     * @throws IOException if the input file cannot be read.
+     */
     public static void main(String[] args) throws IOException {
         String path = args[0];
 
-        scanner = new Scanner(new File(path));
+        scanner = new Scanner(new java.io.File(path));
         int numberOfTests = scanner.nextInt();
         scanner.nextLine();
         for (int i = 1; i <= numberOfTests; i++) {
