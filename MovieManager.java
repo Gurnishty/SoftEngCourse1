@@ -1,3 +1,7 @@
+/**
+ * Represents a manager for handling a collection of movies.
+ * Allows adding movies, displaying them, checking ratings, and finding the best director.
+ */
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -5,10 +9,18 @@ public class MovieManager {
     ArrayList<Movie> movies = new ArrayList<>();
     Scanner scanner;
 
+    /**
+     * Constructs a MovieManager with the given Scanner.
+     *
+     * @param scanner The Scanner to use for input.
+     */
     public MovieManager(Scanner scanner) {
         this.scanner = scanner;
     }
 
+    /**
+     * Adds a new movie to the collection if under the limit and valid input is given.
+     */
     public void addMovie() {
         System.out.println("Enter movie name:");
         String title = scanner.nextLine();
@@ -33,6 +45,9 @@ public class MovieManager {
         System.out.println("Movie " + title + " added successfully!");
     }
 
+    /**
+     * Displays all movies currently in the collection.
+     */
     public void displayAllMovies() {
         if (movies.isEmpty()) {
             System.out.println("No movies are available");
@@ -45,6 +60,9 @@ public class MovieManager {
         }
     }
 
+    /**
+     * Displays the rating for a specific movie by its name.
+     */
     public void displayMovieRating() {
         System.out.println("Enter movie name:");
         String movie_title = scanner.nextLine();
@@ -58,6 +76,9 @@ public class MovieManager {
         System.out.println("No movie found with name " + movie_title);
     }
 
+    /**
+     * Finds and displays the director with the highest average movie rating.
+     */
     public void findBestDirector() {
         if (movies.isEmpty()) {
             System.out.println("No movies are available.");
