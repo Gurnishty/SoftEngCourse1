@@ -4,12 +4,7 @@ import java.util.Scanner;
 public class MovieManager {
     ArrayList<Movie> movies = new ArrayList<>();
     Scanner scanner;
-    
-    public static boolean isNumeric(String str) {
-        if (str == null || str.isEmpty()) return false;
-        return str.matches("-?\\d+(\\.\\d+)?");  // Matches integer or decimal numbers
-    }
-    
+
     public MovieManager(Scanner scanner) {
         this.scanner = scanner;
     }
@@ -23,27 +18,18 @@ public class MovieManager {
             return;
         }
 
-        System.out.print("Enter rating: ");
-        String input = scanner.nextLine();
+        System.out.println("Enter rating:");
         double rating;
-            if (isNumeric(input)) {
-            rating = Double.parseDouble(input);
-        } else {
-            System.out.println("Invalid rating format. Please enter a number.");
-        return;
-        }
-        
+        rating = scanner.nextDouble();
+        scanner.nextLine();
         if (rating < 0 || rating > 10) {
             System.out.println("Invalid rating");
             return;
         }
-
         System.out.println("Enter director name:");
         String director = scanner.nextLine();
-
         Movie movie = new Movie(title, director, rating);
         movies.add(movie);
-
         System.out.println("Movie " + title + " added successfully!");
     }
 
