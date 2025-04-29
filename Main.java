@@ -17,6 +17,7 @@ public class Main {
             System.out.println("5. Exit");
             System.out.println("Please enter your choice");
             choice = scanner.nextInt();
+            scanner.nextLine();
             if (choice < 1 || choice > 5) {
                 System.out.println("Invalid choice. Please try again.");
             }
@@ -29,8 +30,7 @@ public class Main {
                 manager.displayAllMovies();
                 break;
             case 3:
-                String movie_name = scanner.nextLine();
-                manager.displayMovieRating(movie_name);
+                manager.displayMovieRating();
                 break;
             case 4:
                 manager.findBestDirector();
