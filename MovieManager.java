@@ -25,7 +25,7 @@ public class MovieManager {
 
         System.out.print("Enter rating: ");
         String input = scanner.nextLine();
-
+        double rating;
             if (isNumeric(input)) {
             rating = Double.parseDouble(input);
         } else {
