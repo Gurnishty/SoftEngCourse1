@@ -3,7 +3,11 @@ import java.util.Scanner;
 
 public class MovieManager {
     ArrayList<Movie> movies = new ArrayList<>();
-    Scanner scanner = new Scanner(System.in);
+    Scanner scanner; // Use the shared scanner
+
+    public MovieManager(Scanner scanner) {
+        this.scanner = scanner; // Initialize with the scanner from Main
+    }
 
     public void addMovie() {
         System.out.println("Enter movie name:");
@@ -15,7 +19,13 @@ public class MovieManager {
         }
 
         System.out.println("Enter rating:");
-        double rating = Double.parseDouble(scanner.nextLine());
+        double rating;
+        try {
+            rating = Double.parseDouble(scanner.nextLine());
+        } catch (NumberFormatException e) {
+            System.out.println("Invalid rating format. Please enter a number.");
+            return;
+        }
 
         if (rating < 0 || rating > 10) {
             System.out.println("Invalid rating.");
@@ -44,8 +54,8 @@ public class MovieManager {
 
     public void displayMovieRating() {
         System.out.println("Enter movie name:");
-        scanner.nextLine();
-        String movie_title = scanner.nextLine();
+        String movie_title = scanner.nextLine(); // Removed the extra scanner.nextLine()
+
         for (Movie movie : movies) {
             if (movie.title.equalsIgnoreCase(movie_title)) {
                 System.out.println("Rating for " + movie.title + " : " + movie.rating);
