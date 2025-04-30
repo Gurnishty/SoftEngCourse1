@@ -19,7 +19,7 @@ public class Main {
      * Handles user interaction for managing movies
      * @param manager The MovieManager used to manage the movie collection
      */
-    
+
     public static void manage(MovieManager manager) {
         String choice;
         while(true) {
