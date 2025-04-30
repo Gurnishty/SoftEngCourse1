@@ -1,12 +1,10 @@
 /**
- * Main class for the Movies Management System.
- * Handles reading input from a file and managing test runs.
+ * Main class for the Movies Management System
+ * Handles reading input from a file and managing test runs
  */
 public class Main {
 
-    /**
-     * Starts the movie management interface for one test case.
-     */
+    /**Creates manager to pass to manage func*/
     public static void manageMovies(){
         System.out.println("Welcome to the Movies Management System!.");
         MovieManager manager = new MovieManager(scanner);
@@ -14,9 +12,8 @@ public class Main {
     }
 
     /**
-     * Handles user interaction for managing movies.
-     *
-     * @param manager The MovieManager used to manage the movie collection.
+     * Handles user interaction for managing movies
+     * @param manager The MovieManager used to manage the movie collection
      */
     public static void manage(MovieManager manager) {
         String choice;
@@ -52,18 +49,12 @@ public class Main {
         }
     }
 
-    /**
-     * Shared Scanner instance used for reading input.
-     */
+    
+    /** Shared Scanner used for reading input */
     public static Scanner scanner; // Note: Do not change this line.
 
-    /**
-     * Entry point for the program. Reads the input file path, number of tests,
-     * and runs the movie management system for each test.
-     *
-     * @param args Command-line arguments. args[0] should be the file path.
-     * @throws IOException if the input file cannot be read.
-     */
+    /** main */
+    
     public static void main(String[] args) throws IOException {
         String path = args[0];
 
