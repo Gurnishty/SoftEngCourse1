@@ -67,7 +67,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         String path = args[0];
 
-        scanner = new Scanner(new java.io.File(path));
+        scanner = new Scanner(new File(path));
         int numberOfTests = scanner.nextInt();
         scanner.nextLine();
         for (int i = 1; i <= numberOfTests; i++) {
