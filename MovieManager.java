@@ -14,9 +14,9 @@ public class MovieManager {
         this.scanner = scanner;
     }
 
-    
+
     /** Checkes for max movies and adds new movie to the collection if not full */
-    
+
     public void addMovie() {
         System.out.println("Enter movie name:");
         String title = scanner.nextLine();
@@ -34,6 +34,16 @@ public class MovieManager {
             System.out.println("Invalid rating");
             return;
         }
+
+        /** Check if movie already exists */
+
+        for (Movie movie : movies) {
+            if (movie.getTitle(movie).equals(title)) {
+                movie.setRating(rating);
+                return;
+            }
+        }
+
         System.out.println("Enter director name:");
         String director = scanner.nextLine();
         Movie movie = new Movie(title, director, rating);
@@ -41,9 +51,9 @@ public class MovieManager {
         System.out.println("Movie " + title + " added successfully!");
     }
 
-    
+
     /** Displays all movies currently in the collection */
-    
+
     public void displayAllMovies() {
         if (movies.isEmpty()) {
             System.out.println("No movies are available");
@@ -56,7 +66,7 @@ public class MovieManager {
         }
     }
 
-    
+
     /** Displays the rating for a specific movie */
     public void displayMovieRating() {
         System.out.println("Enter movie name:");
@@ -71,9 +81,9 @@ public class MovieManager {
         System.out.println("No movie found with name " + movie_title);
     }
 
-    
-   /** Finds and displays the director with the highest average movie rating */
-     
+
+    /** Finds and displays the director with the highest average movie rating */
+
     public void findBestDirector() {
         if (movies.isEmpty()) {
             System.out.println("No movies are available.");
