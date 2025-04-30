@@ -1,3 +1,7 @@
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
 /**
  * Main class for the Movies Management System
  * Handles reading input from a file and managing test runs
@@ -15,6 +19,7 @@ public class Main {
      * Handles user interaction for managing movies
      * @param manager The MovieManager used to manage the movie collection
      */
+    
     public static void manage(MovieManager manager) {
         String choice;
         while(true) {
@@ -24,7 +29,7 @@ public class Main {
             System.out.println("4. Find the best director");
             System.out.println("5. Exit");
             System.out.println("Please enter your choice:");
-
+            //////////
             choice = scanner.nextLine();
 
             switch (choice) {
@@ -48,13 +53,9 @@ public class Main {
             }
         }
     }
-
-    
-    /** Shared Scanner used for reading input */
     public static Scanner scanner; // Note: Do not change this line.
 
-    /** main */
-    
+
     public static void main(String[] args) throws IOException {
         String path = args[0];
 
