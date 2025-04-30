@@ -1,4 +1,3 @@
-
 /** Represents a movie with a title, director, and rating */
 public class Movie {
     String title;
@@ -13,4 +12,11 @@ public class Movie {
         this.director = director;
         this.rating = rating;
     }
+    public String getTitle(Movie movie){
+        return title;
+    }
+    public void setRating(double new_rating){
+        this.rating = new_rating;
+    }
+
 }
